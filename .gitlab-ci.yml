@@ -1,22 +1,15 @@
 stages:
   - build
   - test
-  - build-docker-image
 
 build:
   stage: build
   script:
+    - apt update && apt install make -y
     - make build
 
 test:
   stage: test
   script:
+    - apt update && apt install make -y
     - make build-and-run-tests
-
-build-docker-image:
-  image: docker:stable
-  services:
-    - docker:dind
-  stage: build-docker-image
-  script:
-    - docker info
