@@ -1,6 +1,5 @@
 image: shanisma/ubuntu:22.10-with-make 
 
-
 stages:
   - build
   - test
@@ -8,11 +7,9 @@ stages:
 build:
   stage: build
   script:
-    - apt update && apt install make -y
     - make build
 
 test:
   stage: test
   script:
-    - apt update && apt install make -y
     - make build-and-run-tests
