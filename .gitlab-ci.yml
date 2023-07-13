@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - build-docker-image
 
 build:
   stage: build
@@ -13,7 +14,7 @@ test:
     - make build-and-run-tests
 
 build-docker-image:
-  image: gitlab/dind
+  image: docker:stable
   services:
     - docker:dind
   stage: build-docker-image
