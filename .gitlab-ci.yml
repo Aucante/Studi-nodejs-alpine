@@ -8,7 +8,8 @@ build:
     entrypoint: [""]
   script:
     - mkdir -p /kaniko/.docker
-    - cat $TEST 
+    - cat $TEST > /tmp/test.txt
+    - cat /tmp/test.txt
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
