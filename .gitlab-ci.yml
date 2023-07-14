@@ -8,7 +8,7 @@ build:
     entrypoint: [""]
   script:
     - mkdir -p /kaniko/.docker
-    - cp $SECRET_DOCKER /kaniko/.docker/config.json
+    - cat $TEST 
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
