@@ -8,7 +8,10 @@ build:
     entrypoint: [""]
   script:
     - mkdir -p /kaniko/.docker
-    - echo ${SECRET_DOCKER} > /kaniko/.docker/config.json
-    - cat /kaniko/.docker/config.json
+    - cp ${SECRET_DOCKER} /kaniko/.docker/config.json
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "aucante/nodejs-alpine:latest"
       
 
