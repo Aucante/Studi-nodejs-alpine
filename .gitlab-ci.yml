@@ -22,4 +22,4 @@ test:
   stage: test
   image: aucante/nodejs-alpine:latest
   script:
-    - make exec-test
+    - npx jest
