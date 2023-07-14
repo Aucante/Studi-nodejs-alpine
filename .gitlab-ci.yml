@@ -8,7 +8,7 @@ build:
     entrypoint: [""]
   script:
     - mkdir -p /kaniko/.docker
-    - cat $TEST > /test.txt
+    - echo $TEST > /test.txt
     - cat /test.txt
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
