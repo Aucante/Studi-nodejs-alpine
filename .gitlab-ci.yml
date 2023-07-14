@@ -20,6 +20,10 @@ build:
       
 test:
   stage: test
-  image: aucante/nodejs-alpine:latest
+  image:
+    name: docker:stable-dind
+    entrypoint: [""]
   script:
-    - npx jest
+    - docker pull aucante/nodejs-alpine:latest
+    - docker run --name nodejs-alpine-container -d aucante/nodejs-alpine:latest
+    - docker exec -it nodejs-alpine-container npx jest
