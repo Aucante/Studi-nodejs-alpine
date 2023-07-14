@@ -21,7 +21,7 @@ build:
 test:
   stage: test
   image:
-    name: docker:stable-dind
+    name: ubuntu:22.10
     entrypoint: [""]
   script:
     - docker run --privileged docker:stable-dind
