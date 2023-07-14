@@ -23,6 +23,7 @@ test:
   image:
     name: docker:stable-dind
     entrypoint: [""]
+  user: root
   script:
     - dockerd-entrypoint.sh
     - docker pull aucante/nodejs-alpine:latest
