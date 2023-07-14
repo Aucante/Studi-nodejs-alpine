@@ -14,6 +14,9 @@ build:
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "aucante/nodejs-alpine:latest"
+  only:
+    changes:
+      - Dockerfile
       
 test:
   stage: test
