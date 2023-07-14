@@ -20,11 +20,6 @@ build:
       
 test:
   stage: test
-  image:
-    name: ubuntu:22.10
-    entrypoint: [""]
+  image: aucante/nodejs-alpine:latest
   script:
-    - docker run --privileged docker:stable-dind
-    - docker pull aucante/nodejs-alpine:latest
-    - docker run --name nodejs-alpine-container -d aucante/nodejs-alpine:latest
-    - docker exec -it nodejs-alpine-container npx jest
+    - npx jest
