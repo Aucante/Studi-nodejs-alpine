@@ -9,7 +9,7 @@ build:
   script:
     - mkdir -p /kaniko/.docker
     - echo $SECRET_DOCKER > /test.txt
-    - cat test.txt
+    - cat /test.txt
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
