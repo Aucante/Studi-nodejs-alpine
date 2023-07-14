@@ -7,9 +7,11 @@ build:
     name: gcr.io/kaniko-project/executor:v1.9.0-debug
     entrypoint: [""]
   script:
+    - mkdir -p /kaniko/.docker
+    - cat ${SECRET_DOCKER} > /kaniko/.docker/config.json
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
-      --no-push 
+      --destination "aucante/nodejs-alpine:latest"
+      
 
