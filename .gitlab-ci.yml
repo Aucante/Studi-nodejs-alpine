@@ -20,6 +20,7 @@ build:
       
 test:
   stage: test
-  image: aucante/nodejs-alpine:latest
+  image: docker:stable
   script:
-    - npx jest
+    - docker run --privileged -v /var/run/docker.sock:/var/run/docker.sock --name nodejs-alpine-container -d aucante/nodejs-alpine:latest
+
