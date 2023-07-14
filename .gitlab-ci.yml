@@ -23,10 +23,8 @@ test:
   image:
     name: docker:stable-dind
     entrypoint: [""]
-  options:
-    - privileged
   script:
-    - dockerd-entrypoint.sh
+    - docker run --privileged docker:stable-dind
     - docker pull aucante/nodejs-alpine:latest
     - docker run --name nodejs-alpine-container -d aucante/nodejs-alpine:latest
     - docker exec -it nodejs-alpine-container npx jest
