@@ -12,6 +12,6 @@ build:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
-      --destination "aucante/nodejs-alpine:latest"
+      --destination "aucante/nodejs-alpine:001"
       
 
