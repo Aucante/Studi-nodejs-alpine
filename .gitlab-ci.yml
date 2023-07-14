@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
 
 build:
   stage: build
@@ -14,4 +15,8 @@ build:
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "aucante/nodejs-alpine:latest"
       
-
+test:
+  stage: test
+  image: aucante/nodejs-alpine:latest
+  script:
+    - make exec-test
