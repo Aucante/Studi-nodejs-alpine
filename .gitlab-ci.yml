@@ -25,5 +25,5 @@ test:
     - name: aucante/nodejs-alpine:latest
       alias: service-nodejs-app  
   script:
-    - apk add curl
-    - curl http://service-nodejs-app:3000
+    - apk add --no-cache make
+    - make exec-test
