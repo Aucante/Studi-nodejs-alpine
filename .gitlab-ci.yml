@@ -7,6 +7,7 @@ test:
   stage: test
   image: node:20-alpine
   script:
+    - npm install
     - npm install jest --save-dev
     - npx jest
 
