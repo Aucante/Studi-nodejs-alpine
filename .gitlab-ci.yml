@@ -20,15 +20,10 @@ build:
       
 test:
   stage: build
-  image: docker:20.10.16
+  image: alpine
   services:
-    - docker:dind                    # necessary for docker run
-    - tutum/wordpress:latest
-  variables:
-    FF_NETWORK_PER_BUILD: "true"     # activate container-to-container networking
-  script: |
-    docker run --rm --name curl \
-      --volume  "$(pwd)":"$(pwd)"    \
-      --workdir "$(pwd)"             \
-      --network=host                 \
-      curlimages/curl:7.74.0 curl "http://tutum-wordpress"
+    - name: aucante/nodejs-alpine:latest
+      alias: service-nodejs-app  
+  script:
+    - apk add curl
+    - curl http://service-nodejs-app:3000
