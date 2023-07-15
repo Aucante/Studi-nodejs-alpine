@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-node
+  labels:
+    app: service-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-node
+  template:
+    metadata:
+      name: service-node
+      labels:
+        app: service-node
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: service-node
+          image: aucante/nodejs-alpine:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-node
+spec:
+  selector:
+    app: service-node
+  ports:
+    - protocol: TCP
+      port: 3000
+  type: ClusterIP

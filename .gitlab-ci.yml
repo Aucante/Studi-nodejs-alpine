@@ -1,20 +1,7 @@
 stages:
-  - test
   - build
+  - test
   
-test:
-  stage: test
-  image: node:alpine
-  services:
-    - name: aucante/nodejs-alpine:latest
-      alias: nodejs-app
-  variables:
-    API_HOST: nodejs-app
-  script:
-    - npm install jest
-    - npx jest
-
-
 build:
   stage: build
   image:
@@ -27,5 +14,18 @@ build:
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "aucante/nodejs-alpine:latest"
+
+test:
+  stage: test
+  image: node:alpine
+  services:
+    - name: aucante/nodejs-alpine:latest
+      alias: nodejs-app
+  variables:
+    API_HOST: nodejs-app
+  script:
+    - npm install jest
+    - npx jest
+
   
 
