@@ -5,7 +5,7 @@ stages:
       
 test:
   stage: test
-  image: node:alpine
+  image: node:20-alpine
   script:
     - npm install jest --save-dev
     - npx jest
@@ -22,6 +22,3 @@ build:
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "aucante/nodejs-alpine:latest"
-  only:
-    changes:
-      - Dockerfile
