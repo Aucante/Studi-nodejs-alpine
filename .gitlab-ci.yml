@@ -18,6 +18,7 @@ build:
 test:
   stage: test
   image: node:alpine
+  services:
     - name: aucante/nodejs-alpine:latest
       alias: nodejs-app
   variables:
