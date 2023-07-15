@@ -1,12 +1,12 @@
 const assert = require('assert');
 const http = require('http');
 
-const hostname = '0.0.0.0';
+const API_HOST = process.env.API_HOST
 const port = 3000;
 
 describe('Hello world', () => {
   it('should return "Hello world"', (done) => {
-    http.get(`http://${hostname}:${port}`, (res) => {
+    http.get(`http://${API_HOST}:${port}`, (res) => {
       let data = '';
       res.on('data', (chunk) => {
         data += chunk;
