@@ -1,6 +1,14 @@
 stages:
-  - build
   - test
+  - build
+  
+      
+test:
+  stage: test
+  image: node:alpine
+  script:
+    - npm install jest --save-dev
+    - npx jest
 
 build:
   stage: build
@@ -17,9 +25,3 @@ build:
   only:
     changes:
       - Dockerfile
-      
-test:
-  stage: test
-  image: aucante/nodejs-alpine:latest 
-  script:
-    - npx jest
