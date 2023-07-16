@@ -46,3 +46,9 @@ build-and-run-tests:
 
 update-kube-config:
 	aws eks update-kubeconfig --region $(CLUSTER_REGION) --name $(CLUSTER_NAME)
+
+install-eck:
+	kubectl create -f https://download.elastic.co/downloads/eck/2.8.0/crds.yaml
+	kubectl apply -f https://download.elastic.co/downloads/eck/2.8.0/operator.yaml
+
+

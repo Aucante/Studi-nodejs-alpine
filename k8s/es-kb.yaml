@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: es-kb
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: es-logging
+  namespace: es-kb
+spec:
+  version: 7.17.11
+  nodeSets:
+  - name: default
+    count: 1
+    config:
+      node.store.allow_mmap: false
+---
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: kb-logging
+  namespace: es-kb
+spec:
+  version: 7.17.11
+  count: 1
+  elasticsearchRef:
+    name: es-logging
