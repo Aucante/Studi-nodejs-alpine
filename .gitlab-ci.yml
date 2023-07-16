@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - deploy
   
 build:
   stage: build
@@ -27,5 +28,12 @@ test:
     - npm install jest
     - npx jest
 
-  
-
+deploy:
+  stage: deploy
+  image: alpine
+  script:
+    - apk add aws-cli curl make
+    - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    - chmod +x kubectl
+    - make update-kube-config
+    - ./kubectl apply -f k8s/deployment.yaml
