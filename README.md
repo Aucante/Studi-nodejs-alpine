@@ -64,3 +64,8 @@
   kubectl port-forward svc/service-node 3000
 ```
 
+#### Deploy Kube
+   
+```bash
+  make deploy-cluster
+```
