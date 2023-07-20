@@ -51,4 +51,8 @@ install-eck:
 	kubectl create -f https://download.elastic.co/downloads/eck/2.8.0/crds.yaml
 	kubectl apply -f https://download.elastic.co/downloads/eck/2.8.0/operator.yaml
 
+deploy-es-kb:
+	kubectl apply -f k8s/es-kb.yaml
 
+## Make this instruction when cluster has just created again
+deploy-cluster: update-kube-config install-eck deploy-es-kb
